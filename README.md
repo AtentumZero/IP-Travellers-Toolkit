@@ -16,4 +16,4 @@ This Toolkit is designed for use in performing risk assessments, Internet vulner
 
 * [Requirements](https://github.com/apacketofsweets/IP-Travellers-Toolkit/wiki/Requirements)
 * [Instructions for use](https://github.com/apacketofsweets/IP-Travellers-Toolkit/wiki/Instructions-for-use)
-* [Disclaimer]()
+* [Disclaimer](https://github.com/apacketofsweets/IP-Travellers-Toolkit/wiki/Disclaimer)
