@@ -48,7 +48,7 @@ if __name__ == '__main__':
 	    ip_addr = line.strip('\n')
             vncsnap_flag = get_security(ip_addr)
             CURRENT_INDEX = CURRENT_INDEX + 1
-            os.system("echo " + str(CURRENT_INDEX) + " > results/vnc-log.txt")
+            os.system("echo " + str(CURRENT_INDEX) + " > vnc-log.txt")
             if vncsnap_flag == 1:
                 CMD = "timeout 60 vncsnapshot -allowblank " + ip_addr + ":0 " + ip_addr + ".jpg > /dev/null 2>&1"
                 os.system(CMD)
