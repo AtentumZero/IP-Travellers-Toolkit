@@ -1,1 +1,123 @@
-COMING SOON
+**********************
+IP-Travellers-Toolkit
+**********************
+Find servers running services/applications known to be running without authentication and/or with common vulnerabilities.
+
+The IP Traveller's Toolkit is a collection of Shell and Python scripts that allows you to a scan a single IP address, range or the entire Internet for servers running a particular type of service or application.
+
+The services featured in the Toolkit are all known to have very common vulnerabilities associated with them - some do not have authentication setup by default (e.g. MongoDB) and others are known to be rife with vulnerabilities unless regularly patched (e.g. WordPress).
+
+Rob Graham's excellent Masscan TCP port scanner is used to scan the Internet/IP ranges for servers on a particular port, each script then performs some kind of test to identify whether that server is running the applciation/server it's looking for. Results are then outputted to Positive and Negative log files.
+
+This is primarily designed for use on Linux, although all scripts should run on macOS, BSD(Free/Open/Net/Dragonfly) and Solaris if you add the path to applications into the script (e.g. change all instances of 'masscan' in each script to '/usr/local/etc/masscan' for it to work on FreeBSD).
+
+This Toolkit is designed for use in performing risk assessments, Internet vulnerability research and red-team penetration testing excercises.
+
+REQUIREMENTS
+*************
+
+The IP-Travellers Toolkit is primarily designed for use on Linux, although all scripts should run on macOS, BSD(Free/Open/Net/Dragonfly) and Solaris if you add the path to applications into the script (e.g. change all instances of 'masscan' in each script to '/usr/local/etc/masscan' for it to work on FreeBSD).
+
+The Toolkit requires the below applications in order to operate:
+
+- python 2.7+
+- masscan
+- vncsnapshot
+- mongo (supplied with the MongoDB server package)
+- tftp (client)
+
+The below tools are supplied by default with most Linux distributions. macOS, BSD and Solaris variants may vary, but generally do supply these tools by default too:
+
+- bash
+- sudo
+- netcat (nc)
+- perl
+- wget
+- grep
+- cat
+
+It is also recommended you install [Screen] so you don't have to keep your Terminal open once the Toolkit is running, and it makes it easier for running multiple scans at once.
+
+DISCLAIMER
+***********
+
+This Toolkit is designed for use in performing risk assessments, Internet vulnerability research and red-team penetration testing exercises.
+
+While the Toolkit does not perform any exploits on remote systems, it does identify potentially vulnerable services that could lead to exploitation. Use this information responsibly, and in-keeping with all your local laws as well as Internet-etiquette (i.e. don't be a dick).
+
+Port-scanning functionality
+----------------------------
+The Toolkit uses port scanning to identify systems and runs queries against public-facing systems to identify if a particular service is running. This is legal in the vast majority of countries, but ensure you are in-keeping with your country of residence's laws when using this Toolkit.
+
+Interactions with remote servers
+---------------------------------
+Also, a quick note on the legality of some of the read-only interactions the Toolkit performs - specifically the VNC module, which finds VNC servers open to the Internet without authentication and takes a screenshot of what that server is displaying.
+
+From an unauthorised access perspective, these systems are publicly available and have had steps taken by its administrator to make it public (i.e. add port forwarding rules, disabling authentication etc.) then we can only assume that its owners have deliberately wanted their server to be open to anyone - much in the same way as a HTTP/HTTPS web server.
+
+That said, if you do find a service that you believe should not be open to the Internet, be a good guy and report it to its owner (or their ISP as listed in the Whois listing for their IP) so they can evaluate whether they need to take that system off the public Internet..
+
+MODULES
+********
+
+- VNC 
+Scans for VNC instances on TCP port 5900, identifies servers that require no authentication before connecting to them and taking a screenshot.
+
+- TFTP
+Scans for TFTP servers on TCP port 69 and identifies openly accessible servers (TFTP has no authentication mechanism).
+
+- MongoDB 
+Scans for MongoDB servers on TCP port 27017 and identifies openly accessible servers (MongoDB has no authentication enabled by default).
+
+- Elasticsearch 
+Scans for Elasticsearch servers on TCP port 9200 and identifies openly accessible servers (Elasticsearch has no authentication enabled by default).
+
+- Redis
+Scans for Redis servers on TCP port 9200 and identifies openly accessible servers (TFTP has no authentication mechanism).
+
+- Emby
+Scans for Emby server on TCP port 8096 (HTTP) and identifies accessible servers. It is unable to differentiate between Emby instances that do or don't have authentication setup (Emby has no authentication enabled by default) so Positive results will show any Emby instance found on port 8096.
+
+- WordPress
+Scans for WordPress servers on a user-specified port (80 or 443), it will pull results for all WordPress instances found. WordPress does require authentication by default, but it is a common attack vector for exploits.
+
+INSTRUCTIONS FOR USE
+*********************
+
+Setup
+------
+
+Ensure you've met all the dependencies in the Requirements page before you start with installation.
+
+Before use, run setup.sh which will ask you for the path to the IP-Travellers-Toolkit directory on your system.  Once done, the path to the Toolkit will be defined in all modules. 
+
+Using the Toolkit
+------------------
+
+The script can then be run with the command: bash toolkit.sh
+
+It is advised to cd into the IP-Travellers-Toolkit directory before executing toolkit.sh, otherwise it will cause problems when running the VNC module.
+
+Once run and a module has been selected, you'll be asked to enter an IP address or range to be scanned.
+
+Example range input is 90.0.0.0/8 - this will scan every IP in that range
+
+To scan the entire Internet enter 0.0.0.0/0 (This will take a LONG time on standard connections)
+
+Results
+--------
+
+All Positive and Negative results will be saved in log files in the Results directory, which is also used by the Toolkit for temporary files, which are written to disk for small periods of time before deletion. 
+
+Scripts such as VNC will save an addition log file (vnc-log.txt) and screenshots in the form of .jpgs to the Results directory.
+
+Tips for use
+-------------
+
+1 - Most scans will take hours/days/weeks to complete depending on how big the IP range you're scanning is and how fast your Internet connection is. To keep the session open, it's highly recommended you install and use Screen so you don't have to keep your Terminal open, and it makes it easier for running multiple scans at once.
+
+2 - To stop the script midway through an IP range scan, quit the script in the usual manner (Ctrl+X on most systems, then re-run the script and enter the loopback IP 127.0.0.1 so the script looks for servers on the IP addresses it detected in the last scan. This is a way of running a quick scan without waiting days/weeks.
+
+Example successful match log entry
+-----------------------------------
+$ cat emby-positives.log POSITIVE MATCH: There is an accessible Emby server at 192.168.0.4
