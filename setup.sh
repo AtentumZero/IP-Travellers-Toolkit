@@ -20,7 +20,7 @@ for f in $dir/modules/*.sh; do
 done
 
 # Defines MODULESDIR variable for toolkit.sh
-cat $TOOLKIT | sed '3a\WORKINGDIR='$dir'/modules' > $TOOLKITTMP
+cat $TOOLKIT | sed '3a\MODULESDIR='$dir'/modules' > $TOOLKITTMP
 rm $TOOLKIT
 mv $TOOLKITTMP $TOOLKIT
 
