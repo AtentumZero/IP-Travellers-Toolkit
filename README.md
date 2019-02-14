@@ -1,0 +1,10 @@
+# IP-Travellers-Toolkit
+
+Find servers running services/applications known to have common vulnerabilities
+
+The IP Traveller's Toolkit is a collection of Shell and Python scripts that allows you to a scan a single IP address, range or the entire Internet for servers running a particular type of service or application. 
+The services featured in the Toolkit are all known to have very common vulnerabilities associated with them - some do not have authentication setup by default (e.g. MongoDB) and others are known to be rife with vulnerabilities unless regularly patched (e.g. WordPress).
+
+Rob Graham's excellent Masscan TCP port scanne is used to scan the Internet/IP ranges for servers on a particular port, each script then performs some kind of test to identify whether that server is running the applciation/server it's looking for. Results are then outputted to Positive and Negative log files.
+
+This Toolkit is ideal for use in performing risk assessments and for red-team penetration testing excercises. 
