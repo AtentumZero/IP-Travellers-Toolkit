@@ -20,4 +20,4 @@ perl -lne 'print $& if /(\d+\.){3}\d+/' $SCANRESULTS > $IPFILE
 rm $SCANRESULTS
 
 # Runs Python script to grab screenshots - no slash needed between variable & script name
-python $WORKINGDIRscreenshot.py
+python $WORKINGDIR/modules/screenshot.py
