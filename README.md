@@ -1,6 +1,6 @@
 # IP-Travellers-Toolkit
 
-Find servers running services/applications known to have common vulnerabilities
+Find servers running services/applications known to be running without authentication and/or with common vulnerabilities
 
 The IP Traveller's Toolkit is a collection of Shell and Python scripts that allows you to a scan a single IP address, range or the entire Internet for servers running a particular type of service or application. 
 The services featured in the Toolkit are all known to have very common vulnerabilities associated with them - some do not have authentication setup by default (e.g. MongoDB) and others are known to be rife with vulnerabilities unless regularly patched (e.g. WordPress).
