@@ -54,5 +54,5 @@ done <&3 # Finishes reading IP and moves onto the next IP in $IPFILE until there
   # Cleans up temporary files
   rm $INDEXFILE
   rm $TMP
- #rm $IPFILE
+  rm $IPFILE
   rm $SCANRESULTS
