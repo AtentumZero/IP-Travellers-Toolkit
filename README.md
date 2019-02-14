@@ -10,7 +10,7 @@ Rob Graham's excellent Masscan TCP port scanne is used to scan the Internet/IP r
 
 This is primarily designed for use on Linux, although all scripts should run on macOS, BSD(Free/Open/Net/Dragonfly) and Solaris if you add the path to applications into the script (e.g. change all instances of 'masscan' in each script to '/usr/local/etc/masscan' for it to work on FreeBSD).
 
-This Toolkit is ideal for use in performing risk assessments and for red-team penetration testing excercises.
+This Toolkit is designed for use in performing risk assessments, Internet vulnerability research and red-team penetration testing excercises.
 
 ## Wiki:
 
