@@ -1,6 +1,6 @@
 # IP-Travellers-Toolkit
 
-Find servers running services/applications known to be running without authentication and/or with common vulnerabilities
+Find servers running services/applications known to be running without authentication and/or with common vulnerabilities.
 
 The IP Traveller's Toolkit is a collection of Shell and Python scripts that allows you to a scan a single IP address, range or the entire Internet for servers running a particular type of service or application. 
 
@@ -12,8 +12,11 @@ This is primarily designed for use on Linux, although all scripts should run on 
 
 This Toolkit is designed for use in performing risk assessments, Internet vulnerability research and red-team penetration testing excercises.
 
+### IMPORTANT! Read the Wiki before running the Toolkit.
+
 ## Wiki:
 
+* [Modules](https://github.com/apacketofsweets/IP-Travellers-Toolkit/wiki/Modules)
 * [Requirements](https://github.com/apacketofsweets/IP-Travellers-Toolkit/wiki/Requirements)
 * [Instructions for use](https://github.com/apacketofsweets/IP-Travellers-Toolkit/wiki/Instructions-for-use)
 * [Disclaimer](https://github.com/apacketofsweets/IP-Travellers-Toolkit/wiki/Disclaimer)
