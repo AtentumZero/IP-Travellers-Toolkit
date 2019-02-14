@@ -29,6 +29,6 @@ mv $TOOLKITTMP $TOOLKIT
 sed -e "s/results//g" -i $dir/modules/vnc.sh
 
 # Python screenshot script needs a variable to be defined
-cat $dir/modules/screenshot.py | sed '5a\IPFILE = '$dir/results/vnc-ips.txt'' > $dir/results/setup-tmp.txt
+cat $dir/modules/screenshot.py | sed '5a\IPFILE = '"$dir/results/vnc-ips.txt"'' > $dir/results/setup-tmp.txt
 rm $dir/modules/screenshot.py
 mv $dir/results/setup-tmp.txt $dir/modules/screenshot.py
