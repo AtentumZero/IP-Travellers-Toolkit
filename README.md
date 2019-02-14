@@ -7,4 +7,6 @@ The services featured in the Toolkit are all known to have very common vulnerabi
 
 Rob Graham's excellent Masscan TCP port scanne is used to scan the Internet/IP ranges for servers on a particular port, each script then performs some kind of test to identify whether that server is running the applciation/server it's looking for. Results are then outputted to Positive and Negative log files.
 
-This Toolkit is ideal for use in performing risk assessments and for red-team penetration testing excercises. 
+This is primarily designed for use on Linux, although all scripts should run on macOS, BSD(Free/Open/Net/Dragonfly) and Solaris if you add the path to applications into the script (e.g. change all instances of 'masscan' in each script to '/usr/local/etc/masscan' for it to work on FreeBSD).
+
+This Toolkit is ideal for use in performing risk assessments and for red-team penetration testing excercises.
