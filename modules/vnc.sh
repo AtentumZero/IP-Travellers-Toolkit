@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #If there is no 'WORKINGDIR' variable on line 5, setup.sh must be run first
-RESULTSDIR=$WORKINGDIR/
+RESULTSDIR=$WORKINGDIR/results
 IPFILE=$RESULTSDIR/vnc-ips.txt
 TMP=$RESULTSDIR/vnc-tmp.txt
 SCANRESULTS=$RESULTSDIR/vnc-scan.txt
