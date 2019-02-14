@@ -56,3 +56,5 @@ done <&3 # Finishes reading IP and moves onto the next IP in $IPFILE until there
   rm $TMP
   rm $IPFILE
   rm $SCANRESULTS
+
+echo "Operation complete. Successful and Unsuccessful connection logs have been saved in: $WORKINGDIR/"
