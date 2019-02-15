@@ -27,12 +27,15 @@ cd $WORKINGDIR/
 while read line
   do
 
+  # Removes previous Index files
+  rm $INDEXFILE*
+
   # Attempts to download a web page from IP
   # Timeout (-T) is set to 5 seconds. wget does not retry a failed connection (-t option)
   wget -T 5 -t 1 http://$line:$PORT
 
   # Outputs wget results with 'emby' in the file to a temporary file
-  cat $INDEXFILE* | grep emby > $TMP
+  cat $INDEXFILE | grep emby > $TMP
 
   # Outputs results to log files based on whether an Emby server is available at that IP
   if [ -f $TMP ]
