@@ -4,7 +4,7 @@
 IPFILE=$WORKINGDIR/elastic-ips.txt
 TMP=$WORKINGDIR/elastic-tmp.txt
 SCANRESULTS=$WORKINGDIR/elastic-scanresults.txt
-INDEXFILE=$WORKINGDIR/index.html
+INDEXFILE=$WORKINGDIR/elastic.html
 PORT=9200
 
 echo "Please enter an IP address or range to scan..."
@@ -29,7 +29,7 @@ while read line
 
   # Attempts to download a web page from IP
   # Timeout (-T) is set to 5 seconds. wget does not retry a failed connection (-t option)
-  wget -T 5 -t 1 http://$line:$PORT
+  wget -T 5 -t 1 http://$line:$PORT -O $INDEXFILE
 
   # Outputs wget results with Elastic Search server information in the file to a temporary file
   cat $INDEXFILE* | grep "cluster_name" > $TMP
