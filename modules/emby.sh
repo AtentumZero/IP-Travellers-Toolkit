@@ -4,7 +4,7 @@
 IPFILE=$WORKINGDIR/emby-ips.txt
 TMP=$WORKINGDIR/emby-tmp.txt
 SCANRESULTS=$WORKINGDIR/emby-scanresults.txt
-INDEXFILE=$WORKINGDIR/index.html
+INDEXFILE=$WORKINGDIR/emby.html
 PORT=8096
 
 echo "Please enter an IP address or range to scan..."
@@ -32,7 +32,7 @@ while read line
 
   # Attempts to download a web page from IP
   # Timeout (-T) is set to 5 seconds. wget does not retry a failed connection (-t option)
-  wget -T 5 -t 1 http://$line:$PORT
+  wget -T 5 -t 1 http://$line:$PORT -O $INDEXFILE
 
   # Outputs wget results with 'emby' in the file to a temporary file
   cat $INDEXFILE | grep emby > $TMP
