@@ -1,7 +1,6 @@
 #!/bin/sh
 
 #If there is no 'WORKINGDIR' variable on line 4, setup.sh must be run first
-WORKINGDIR=/home/sion/IP-Travellers-Toolkit/results
 IPFILE=$WORKINGDIR/mongo-ips.txt
 TMP=$WORKINGDIR/mongo-tmp.txt
 SCANRESULTS=$WORKINGDIR/mongo-scanresults.txt
