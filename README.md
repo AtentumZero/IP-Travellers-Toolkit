@@ -14,8 +14,6 @@ This is primarily designed for use on Linux, although all scripts should run on 
 
 This Toolkit is designed for use in performing risk assessments, Internet vulnerability research and red-team penetration testing excercises.
 
-### IMPORTANT! Read the Wiki before running the Toolkit.
-
 ## Wiki:
 
 * [Modules](https://github.com/apacketofsweets/IP-Travellers-Toolkit/wiki/Modules)
