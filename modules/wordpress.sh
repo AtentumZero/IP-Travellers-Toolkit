@@ -5,6 +5,7 @@ IPFILE=$WORKINGDIR/wordpress-ips.txt
 TMP=$WORKINGDIR/wordpress-tmp.txt
 SCANRESULTS=$WORKINGDIR/wordpress-scanresults.txt
 INDEXFILE=$WORKINGDIR/wp-login.php
+EXCLUDE=$WORKINGDIR/exclude.txt
 
 echo "Please enter an IP address or range to scan..."
 read IP
@@ -12,13 +13,16 @@ read IP
 echo "Please enter the port to target (e.g. 80 & 443)..."
 read PORT
 
-# Scans specified IP address(es) and outputs results to a file
-sudo masscan -p$PORT $IP >> $SCANRESULTS
+echo "Please enter a packet-per-second rate to scan with... (Slow: 10pps, Fast: 10000pps)"
+read RATE
+
+# Scans specified IP address(es) and outputs  to a file
+sudo masscan -p$PORT $IP --rate $RATE --excludefile $EXCLUDE >> $SCANRESULTS
 
 # Reads $SCANRESULTS, extracts IP addresses only and outputs to a file
 perl -lne 'print $& if /(\d+\.){3}\d+/' $SCANRESULTS >> $IPFILE
 
-# Required for while read line 
+# Required for while read line
 exec 3<$IPFILE
 
 # Ensures script is run in the working directory
@@ -29,7 +33,7 @@ cd $WORKINGDIR/
 while read line
   do
 
-  # Attempts to download a web page from IP - certificates ignored as we're communicated directly with IPs 
+  # Attempts to download a web page from IP - certificates ignored as we're communicated directly with IPs
   # Timeout (-T) is set to 5 seconds. wget does not retry a failed connection (-t option)
   wget -T 5 -t 1 --no-check-certificate $line/wp-login.php
 
