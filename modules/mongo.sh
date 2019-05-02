@@ -4,13 +4,17 @@
 IPFILE=$WORKINGDIR/mongo-ips.txt
 TMP=$WORKINGDIR/mongo-tmp.txt
 SCANRESULTS=$WORKINGDIR/mongo-scanresults.txt
+EXCLUDE=$WORKINGDIR/exclude.txt
 PORT=27017
 
 echo "Please enter an IP address or range to scan..."
 read IP
 
-# Scans specified IP address(es) and outputs results to a file
-sudo masscan -p$PORT $IP >> $SCANRESULTS
+echo "Please enter a packet-per-second rate to scan with... (Slow: 10pps, Fast: 10000pps)"
+read RATE
+
+# Scans specified IP address(es) and outputs  to a file
+sudo masscan -p$PORT $IP --rate $RATE --excludefile $EXCLUDE >> $SCANRESULTS
 
 # Reads $SCANRESULTS, extracts IP addresses only and outputs to a file
 perl -lne 'print $& if /(\d+\.){3}\d+/' $SCANRESULTS >> $IPFILE
@@ -26,7 +30,7 @@ cd $WORKINGDIR/
 while read line
   do
 
-  # Attempts to connect to Mongo server 
+  # Attempts to connect to Mongo server
  echo "show dbs\n" | mongo --host $IP > $TMP
 
   # Outputs results to log files based on whether there's a responding MongoDN server at that IP
