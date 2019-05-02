@@ -14,6 +14,8 @@ This is primarily designed for use on Linux, although all scripts should run on 
 
 This Toolkit is designed for use in performing risk assessments, Internet vulnerability research and red-team penetration testing excercises.
 
+For more information on scanning the Internet, [watch this Defcon talk](https://www.youtube.com/watch?v=UOWexFaRylM).
+
 ## Wiki:
 
 * [Modules](https://github.com/apacketofsweets/IP-Travellers-Toolkit/wiki/Modules)
