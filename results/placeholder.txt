@@ -1,3 +1,0 @@
-Delete this file once you've downloaded the Toolkit to your system. 
-
-This file is merely a placeholder to keep the Results file from deleting itself in GitHub.
