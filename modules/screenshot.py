@@ -2,7 +2,7 @@
 import socket
 import os
 
-# If there is no IP_FILE variable below, run setup.sh first
+# If there is no IPFILE variable below, run setup.sh first
 TCP_PORT = 5900
 CURRENT_INDEX = 0
 
