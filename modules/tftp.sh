@@ -4,13 +4,17 @@
 IPFILE=$WORKINGDIR/tftp-ips.txt
 TMP=$WORKINGDIR/tftp-tmp.txt
 SCANRESULTS=$WORKINGDIR/tftp-scanresults.txt
+EXCLUDE=$WORKINGDIR/exclude.txt
 PORT=69
 
 echo "Please enter an IP address or range to scan..."
 read IP
 
-# Scans specified IP address(es) and outputs results to a file
-sudo masscan -p$PORT $IP >> $SCANRESULTS
+echo "Please enter a packet-per-second rate to scan with... (Slow: 10pps, Fast: 10000pps)"
+read RATE
+
+# Scans specified IP address(es) and outputs  to a file
+sudo masscan -p$PORT $IP --rate $RATE --excludefile $EXCLUDE >> $SCANRESULTS
 
 # Reads $SCANRESULTS, extracts IP addresses only and outputs to a file
 perl -lne 'print $& if /(\d+\.){3}\d+/' $SCANRESULTS >> $IPFILE
