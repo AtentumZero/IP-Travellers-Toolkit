@@ -13,6 +13,8 @@ This is primarily designed for use on Linux, although all scripts should run on 
 
 This Toolkit is designed for use in performing risk assessments, Internet vulnerability research and red-team penetration testing excercises.
 
+For more information on scanning the Internet, watch this Defcon talk.
+
 REQUIREMENTS
 *************
 
@@ -94,15 +96,15 @@ Before use, run setup.sh which will ask you for the path to the IP-Travellers-To
 Using the Toolkit
 ------------------
 
-The script can then be run with the command: bash toolkit.sh
+The script can then be run with the command: `bash toolkit.sh`
 
-It is advised to cd into the IP-Travellers-Toolkit directory before executing toolkit.sh, otherwise it will cause problems when running the VNC module.
+It is advised to `cd` into the IP-Travellers-Toolkit directory before executing toolkit.sh, otherwise it will cause problems when running the VNC module.
 
-Once run and a module has been selected, you'll be asked to enter an IP address or range to be scanned.
+Once run and a module has been selected, you'll be asked to enter an IP address or range to be scanned. Example range input is `90.0.0.0/8` - this will scan every IP in that range.
 
-Example range input is 90.0.0.0/8 - this will scan every IP in that range
+To scan the entire Internet enter `0.0.0.0/0` (This will take a LONG time on standard connections)
 
-To scan the entire Internet enter 0.0.0.0/0 (This will take a LONG time on standard connections)
+You also need to set a rate to scan at. A slow rate would be 10 packets per second, whereas a fast one will be 10000.
 
 Results
 --------
@@ -110,6 +112,15 @@ Results
 All Positive and Negative results will be saved in log files in the Results directory, which is also used by the Toolkit for temporary files, which are written to disk for small periods of time before deletion. 
 
 Scripts such as VNC will save an addition log file (vnc-log.txt) and screenshots in the form of .jpgs to the Results directory.
+
+Exclude list
+=============
+
+You and/or your ISP will almost certainly receive many abuse reports from people who claim your scans are malicious. To appease their concerns, and to avoid your IP address range from being blacklisted, you can add an IP address or range to an Exclude list.
+
+This is located within the Results directory, inside exclude.txt. The Exclude list will accept single IP addresses as well as ranges.
+
+By default `255.255.255.255` is in the exclude list, it is recommended this stays in as without it you won't be able to scan the `0.0.0.0/0` subnet (i.e. the whole Internet). This is a restriction added by Masscan.
 
 Tips for use
 -------------
