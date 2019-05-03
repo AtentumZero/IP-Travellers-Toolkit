@@ -52,12 +52,13 @@ while read line
   else
       echo "$TMP is not readable or does not exist" >> $WORKINGDIR/wordpress-errors.log
   fi
+  
+  rm $INDEXFILE
+  rm $TMP
 
 done <&3 # Finishes reading IP and moves onto the next IP in $IPFILE until there are no more IPs left
 
   # Cleans up temporary files
-  rm $INDEXFILE
-  rm $TMP
   rm $IPFILE
   rm $SCANRESULTS
 
